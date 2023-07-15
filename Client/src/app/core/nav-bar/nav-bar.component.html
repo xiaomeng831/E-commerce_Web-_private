@@ -1,0 +1,229 @@
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Ecommerce</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="p-3" routerLink="/" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="p-3" routerLink="/shop" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="p-3" routerLink="/test-error" routerLinkActive="active">Errors</a>
+                </li>
+            </ul>
+
+            <div class="d-flex align-items-center">
+                <a routerLink="/basket" class="position-relative">
+                    <i class="bi bi-cart fs-4 me-5 text-dark"></i>
+                    <div *ngIf="(basketService.basketSource$ | async) as basket" class="cart-no">
+                        {{getCount(basket.items)}}
+                    </div>
+                </a>
+                <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+                    <a routerLink="/account/login" class="btn btn-outline-secondary me-2">Login</a>
+                    <a routerLink="/account/register" class="btn btn-outline-secondary me-2">Sign up</a>
+                </ng-container>
+
+                <ng-container *ngIf="accountService.currentUser$ | async as user">
+                    <div class="dropdown ms-3 me-5" style="cursor: pointer;" dropdown>
+                        <a dropdownToggle class="dropdown-toggle">
+                            <strong>Welcome {{user.displayName}}</strong>
+                        </a>
+                        <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
+                            <li class="py-1">
+                                <a routerLink="/basket" class="dropdown-item">
+                                    <i class="bi bi-cart fs-4 me-5 text-dark"></i> View basket
+                                </a>
+                            </li>
+                            <li class="py-1">
+                                <a routerLink="/orders" class="dropdown-item">
+                                    <i class="bi bi-cart fs-4 me-5 text-dark"></i> View orders
+                                </a>
+                            </li>
+                            <div class="dropdown-divider"></div>
+                            <li class="py-1">
+                                <a (click)="accountService.logout()" class="dropdown-item">
+                                    <i class="bi bi-cart fs-4 me-5 text-dark"></i> Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</nav> -->
+
+<header class="ltn__header-area ltn__header-8 section-bg-6">
+
+    <!-- ltn__header-middle-area start -->
+    <div class="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white plr--5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col logo-column">
+                    <div class="site-logo">
+                        <a href="index.html">
+                            <!-- <img src="../../../assets/images/logo.png" alt="Logo"> -->
+                            Ecommerce
+                        </a>
+                    </div>
+                </div>
+                <div class="col header-menu-column">
+                    <div class="header-menu d-none d-xl-block">
+                        <nav>
+                            <div class="ltn__main-menu">
+                                <ul>
+                                    <li class="menu-icon">
+                                        <a routerLink="/">Home</a>
+                                    </li>
+                                    <li class="menu-icon">
+                                        <a routerLink="/shop">Shop</a>
+                                    </li>
+                                    <li class="menu-icon">
+                                        <a routerLink="/test-error">Errors</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="ltn__header-options">
+                        <ul>
+                            <li>
+                                <!-- user-menu -->
+                                <div class="ltn__drop-menu user-menu">
+                                    <ul>
+                                        <li>
+                                            <i class="bi bi-person fs-4" style="cursor: pointer;"></i>
+                                            <ul>
+                                                <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+                                                    <li><a routerLink="/account/login">Login</a></li>
+                                                    <li><a routerLink="/account/register">Sign up</a></li>
+                                                </ng-container>
+                                                <ng-container *ngIf="accountService.currentUser$ | async as user">
+                                                    <li class="py-1">
+                                                        <strong>Welcome {{user.displayName}}</strong>
+                                                    </li>
+                                                    <li class="py-1">
+                                                        <a routerLink="/basket" class="dropdown-item">
+                                                            View basket
+                                                        </a>
+                                                    </li>
+                                                    <li class="py-1">
+                                                        <a routerLink="/orders" class="dropdown-item">
+                                                            View orders
+                                                        </a>
+                                                    </li>
+                                                    <div class="dropdown-divider"></div>
+                                                    <li class="py-1">
+                                                        <a (click)="accountService.logout()" class="dropdown-item" style="cursor: pointer;">
+                                                            Logout
+                                                        </a>
+                                                    </li>
+                                                </ng-container>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <!-- mini-cart 2 -->
+                                <div class="mini-cart-icon mini-cart-icon-2">
+                                    <a routerLink="/basket" class="position-relative ltn__utilize-toggle">
+                                        <span class="mini-cart-icon">
+                                            <i class="bi bi-cart fs-4 text-dark"></i>
+                                            <sup>
+                                                <div *ngIf="(basketService.basketSource$ | async) as basket"
+                                                    class="cart-no">
+                                                    {{getCount(basket.items)}}
+                                                </div>
+                                            </sup>
+                                        </span>
+                                        <h6>
+                                            <span>Your Cart</span>
+                                            <span class="ltn__secondary-color"
+                                                *ngIf="(basketService.basketTotalSource$ | async) as totals">
+                                                {{totals.subtotal | currency}}
+                                                <!-- <ng-container *ngFor="let item of basket.items">
+                                                    {{item.price * item.quantity | currency}}
+                                                </ng-container> -->
+                                            </span>
+                                        </h6>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <!-- Mobile Menu Button -->
+                                <div class="mobile-menu-toggle d-xl-none" (click)="toggleOffcanvas()">
+                                    <a class="ltn__utilize-toggle">
+                                        <svg viewBox="0 0 800 600">
+                                            <path
+                                                d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
+                                                id="top"></path>
+                                            <path d="M300,320 L540,320" id="middle"></path>
+                                            <path
+                                                d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
+                                                id="bottom"
+                                                transform="translate(480, 320) scale(1, -1) translate(-480, -318) ">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ltn__header-middle-area end -->
+</header>
+
+
+
+
+
+<!-- Mobile Menu Button -->
+<div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu"
+    [ngClass]="{'ltn__utilize-open':isOpen}">
+    <div class="ltn__utilize-menu-inner ltn__scrollbar">
+        <div class="ltn__utilize-menu-head">
+            <div class="btn-wrapper">
+                <ng-container *ngIf="accountService.currentUser$ | async as user">
+                    <strong #userName>Welcome {{user.displayName}}</strong>
+                </ng-container>
+                <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+                    <div class="site-logo">
+                        <!-- <img src="../../../assets/images/logo.png" alt="Logo"> -->
+                        Welcome Ecommerce
+                    </div>
+                </ng-container>
+                <!-- <a href="service.html" class="theme-btn-1 btn btn-round">Shop Now</a> -->
+            </div>
+            <button class="ltn__utilize-close" (click)="toggleOffcanvas()">×</button>
+        </div>
+        <div class="ltn__utilize-menu">
+            <ul>
+                <li class="menu-icon">
+                    <a routerLink="/">Home</a>
+                </li>
+                <li class="menu-icon">
+                    <a routerLink="/shop">Shop</a>
+                </li>
+                <li class="menu-icon">
+                    <a routerLink="/test-error">Errors</a>
+                </li>
+            </ul>
+        </div>
+    </div>

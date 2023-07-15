@@ -1,0 +1,27 @@
+<div *ngIf="product">
+    <div class="ltn__product-item text-center">
+        <div class="product-img">
+            <a [routerLink] = "['/shop', product.id]"><img src="{{product.pictureUrl}}" alt="{{product.name}}"></a>                                           
+            <div class="product-hover-action product-hover-action-2">
+                <ul>
+                    <li class="add-to-cart">
+                        <a (click)="addItemToBasket()" style="cursor: pointer;">
+                            ADD TO CART
+                        </a>
+                    </li>
+                    <li>
+                        <a [routerLink] = "['/shop', product.id]">
+                            VIEW
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="product-info">
+            <h2 class="product-title"><a [routerLink] = "['/shop', product.id]">{{product.name}}</a></h2>
+            <div class="product-price">
+                <span>{{product.price | currency}}</span>
+            </div>
+        </div>
+    </div>
+</div>  

@@ -1,0 +1,31 @@
+[
+    {
+        "stmt": "SELECT * FROM ProductTypes;",
+        "header": [
+            "Id",
+            "Name"
+        ],
+        "rows": [
+            [
+                "1",
+                "chrysanthemum"
+            ],
+            [
+                "2",
+                "hyacinth"
+            ],
+            [
+                "3",
+                "lily"
+            ],
+            [
+                "4",
+                "rose"
+            ],
+            [
+                "5",
+                "tulip"
+            ]
+        ]
+    }
+]
